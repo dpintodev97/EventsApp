@@ -83,9 +83,17 @@
     	<artifactId>jakarta.security.enterprise-api</artifactId>
     	<version>3.0.0</version>
 	</dependency>
-
+	
+	<!-- glassfish: Proporciona soporte para la biblioteca Jakarta Standard Tag Library (JSTL). -->
+	<!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
+	<dependency>
+    	<groupId>org.glassfish.web</groupId>
+    	<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+    	<version>3.0.1</version>
+	</dependency>
 
   </dependencies>
+
 
   <build>
     <finalName>EventsApp</finalName>
