@@ -97,8 +97,11 @@
 	<dependency>
     	<groupId>org.codehaus.cargo</groupId>
     	<artifactId>cargo-core-container-tomcat</artifactId>
-    	<version>1.10.7</version>
+    	<version>1.10.13</version>
+    	<type>jar</type>
 	</dependency>
+	<!--type jar PORQUE LOS jar se utilizan para encapsular y compartir código reutilizable; 
+    	y es jar porque proporciona bibliotecas para que Cargo interactúe con Tomcat, que no es un componente específico de la web. -->
 
   </dependencies>
 
