@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(
 		name = "HTMLServlet",    //NOMBRE SERVLET
-		urlPatterns = {"/html"}, //PATRON A USAR PARA ACCDER AL SERVLET; ACCEDER A LA APP PRINCIPAL AL ESCRIBIR /html
+		urlPatterns = {"/vistas/html"}, //PATRON A USAR PARA ACCDER AL SERVLET; ACCEDER A LA APP PRINCIPAL AL ESCRIBIR /html
 		loadOnStartup = 1        //INDICA QUE CARGUE EL SERVLET EN CUANTO ARRANQUE LA APP.
 
 		)  
