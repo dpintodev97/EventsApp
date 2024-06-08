@@ -2,7 +2,13 @@ package es.events.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "usuarios")
 public class Usuario implements Serializable, Comparable<Usuario> {
 	//ATRIBUTOS PRIVADOS DE CLASE:
 	private int idUsuario;
@@ -14,6 +20,7 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 	private String password;
 	private LocalDateTime fechaRegistro; //GUARDO EN ESTE TIPO DE DATO, YA QUE ES MODERNO (JAVA8 EN ADELANTE), Y NO NECESITO PRECISIÓN EN NANOSEGUNDOS
 	
+	private List<Evento> eventos; //Usuario DUEÑA DE LA RELACION OneToMany; 
 	
 	@Override
 	public int compareTo(Usuario o) {
