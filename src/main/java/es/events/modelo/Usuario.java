@@ -4,7 +4,12 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +27,9 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 	
 	private List<Evento> eventos; //Usuario DUEÑA DE LA RELACION OneToMany; 
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_usuario")
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -86,6 +94,7 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 		this.fechaRegistro = fechaRegistro;
 	}
 
+	@OneToMany(mappedBy = "user") //MAPEADO POR user, en CLASE EVENTO; QUE ES DONDE SE ESPECIFICA LA fk_usuario QUE APUNTA A id_usuario EN LA BBDD
 	public List<Evento> getEventos() {
 		return eventos;
 	}
