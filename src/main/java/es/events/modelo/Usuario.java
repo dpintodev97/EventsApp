@@ -2,6 +2,7 @@ package es.events.modelo;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +15,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "usuarios")
 public class Usuario { //NO NECESITA QUE IMPLEMENTE SERIALIZABLA, YA QUE NO SE ENVIARÁ SUS DATOS A ARCHIVOS EXTERNOS O POP LA RED; SOLO EN LA BBDD SE GUARDARÁ
-						// NO NECESITA SER COMPARABLE TAMPOCO
+						// NO NECESITA SER COMPARABLE TAMPOCO, NI COMPARATORS
 	//ATRIBUTOS PRIVADOS DE CLASE:
 	private int idUsuario;
 	private String nombre;
@@ -102,6 +103,10 @@ public class Usuario { //NO NECESITA QUE IMPLEMENTE SERIALIZABLA, YA QUE NO SE E
 	public void setEventos(List<Evento> eventos) {
 		this.eventos = eventos;
 	}
+
+	//**** NOTA: METODOS HASHCODE Y EQUALS: NO SON NECESARIOS AHORA MISMO, NO ES NECESARIO ORDENAR USUARIOS... 
+	//(SI A FUTURO CRECE LA APP Y NECESITO ORDENAR EN COLECCIONES LOS USUARIOS, SEGUN ROLES EN LA APP, ES INTERESANTE)
+	
 
 	
 }

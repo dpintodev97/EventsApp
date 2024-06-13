@@ -2,6 +2,7 @@ package es.events.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,13 +10,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+//import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "eventos")
-public class Evento implements Serializable, Comparable<Evento>{
+public class Evento implements Serializable{ //NO IMPLEMENTA INTERFACE COMPARABLE, YA QUE USARÉ COMPARATORS PERSONALIZADOS
 	//ATRIBUTOS PRIVADOS DE CLASE:
 	private int idEvento;
 	private String nombre;
@@ -78,10 +79,26 @@ public class Evento implements Serializable, Comparable<Evento>{
 		this.user = user;
 	}
 
+	//METODOS HASHCODE Y EQUALS (por ID): PARA GESTIONAR EL ESTADO DE LAS ENTIDADES 
+		//(por ejemplo, la detección de duplicados, la comparación de entidades en el contexto de persistencia)
 	@Override
-	public int compareTo(Evento o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int hashCode() {
+		return Objects.hash(idEvento);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Evento other = (Evento) obj;
+		return idEvento == other.idEvento;
+	}
+	
+
+	
 
 }
