@@ -2,6 +2,7 @@ package es.events.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -97,6 +98,31 @@ public class Evento implements Serializable{ //NO IMPLEMENTA INTERFACE COMPARABL
 		Evento other = (Evento) obj;
 		return idEvento == other.idEvento;
 	}
+	
+	//------  COMPARATOR MULTICRITERIO DE ORDENACIÓN DE OBJETOS Evento: .compare<---------------------------- CENTRALIZACIÓN DE LA LÓGICA DE ORDENACIÓN
+	/**
+	 * COMPARATOR MULTICRITERIO: por nombre, fecha y hora, y por nombre + fecha y hora
+	 * a)crea un comparador que ordena los eventos según el resultado 	del método getNombre() de la clase Evento; devuelve eventos por orden alfabético
+	 * b)el thenComparing, se llama en el resultado del primer comparador. 
+			Así,si dos eventos tienen el mismo nombre, se compararán basándose en el resultado del método getFechaHora().
+			Esto asegura que los eventos con el mismo nombre se ordenen cronológicamente por su fecha y hora
+	 * @return Comparator
+	 * 
+	 * NOTA: Al diseñar la CAPA DE NEGOCIO (Lógica), el usuario pueda ordenar eventos según el criterio que elija: 
+	 * 		por nombre, por fecha y hora, o por ambos (nombre + fecha y hora)
+	 * NOTA: Las dobles dos puntos :: ES: operador de referencia a método. Se utiliza para hacer referencia a métodos o constructores de forma compacta y más legible, 
+	 * especialmente cuando se utilizan con expresiones lambda. 
+	 * En el contexto del Comparator, Evento::getNombre y Evento::getFechaHora son referencias a métodos que indican que se deben usar los métodos getNombre y getFechaHora 
+	 * de la clase Evento para la comparación.
+	 */
+	public static Comparator<Evento> getComparatorMulti(){
+		return Comparator.comparing(Evento::getNombre).thenComparing(Evento::getFechaHora);
+			
+	}
+	
+	
+	
+		
 	
 
 	
