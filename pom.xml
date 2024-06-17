@@ -31,6 +31,7 @@
 
      <!--   DEPENDENCIAS DE HIBERNATE (ORM) Y DE MYSQL  ; NO USAREÉ SPRING, NI JDBC...   -->
     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <!-- -->
 	<dependency>
    		<groupId>org.hibernate</groupId>
     	<artifactId>hibernate-core</artifactId>

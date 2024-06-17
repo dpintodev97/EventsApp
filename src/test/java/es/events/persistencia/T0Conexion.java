@@ -1,8 +1,6 @@
 package es.events.persistencia;
 
-
 import org.junit.jupiter.api.Test;
-
 import jakarta.persistence.EntityManager;
 
 public class T0Conexion {
