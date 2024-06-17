@@ -1,7 +1,8 @@
 package es.events.persistencia;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
 
 // ********************    PATRON SINGLETON QUE DEVUELVE NUESTRO ENTITY MANAGER FACTORY:  ***************************
 // ( HAGO EN PRIVADO Y STATIC EL ATRIBUTO SIEMPRE; Y UN METODO PUBLICO Y STATIC QUE DEVUELVA ESA REFERENCIA )
