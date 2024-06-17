@@ -29,15 +29,14 @@
     	<scope>test</scope>
 	</dependency>
 
-     <!--   DEPENDENCIAS DE HIBERNATE (ORM) Y DE MYSQL  ; NO USAREÉ SPRING, NI JDBC...   -->
-    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-    <!-- -->
+     <!--   DEPENDENCIAS DE HIBERNATE (ORM) (SUPERIOR A LA VERSION 5, PARA QUE SOPORTE JAKARTA) Y DE MYSQL  ; NO USAREÉ SPRING, NI JDBC...   -->
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 	<dependency>
-   		<groupId>org.hibernate</groupId>
+    	<groupId>org.hibernate</groupId>
     	<artifactId>hibernate-core</artifactId>
-    	<version>5.6.15.Final</version>
+    	<version>6.1.7.Final</version>
 	</dependency>
-	
+
 	<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 	<dependency>
     	<groupId>com.mysql</groupId>
