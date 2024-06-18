@@ -105,6 +105,22 @@ public class Usuario { //NO NECESITA QUE IMPLEMENTE SERIALIZABLA, YA QUE NO SE E
 		this.eventos = eventos;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(idUsuario);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return idUsuario == other.idUsuario;
+	}
 	//**** NOTA: METODOS HASHCODE Y EQUALS: NO SON NECESARIOS AHORA MISMO, NO ES NECESARIO ORDENAR USUARIOS... 
 	//(SI A FUTURO CRECE LA APP Y NECESITO ORDENAR EN COLECCIONES LOS USUARIOS, SEGUN ROLES EN LA APP, ES INTERESANTE)
 	

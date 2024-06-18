@@ -3,6 +3,7 @@ package es.events.modelo;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -11,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 //import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -26,6 +29,11 @@ public class Evento implements Serializable{ //NO IMPLEMENTA INTERFACE COMPARABL
 	private LocalDateTime fechaHora; //GUARDO EN ESTE TIPO DE DATO, YA QUE ES MODERNO (JAVA8 EN ADELANTE), Y NO NECESITO PRECISIÓN EN NANOSEGUNDOS
 	
 	private Usuario user; //LADO DEL N (FK): Evento TIENE ASIGNADO UN Usuario; 1 Usuario TIENE N Eventos (List)
+	
+	private List<Categoria> categorias; //RELACION EVENTO - CATEGORIA, YA QUE 1 EVENTO TIENE 1 LISTA DE CATEGORIAS A LAS CUALES PUEDE PERTENECER; @ManyToMany
+										//CLASE EVENTO ES DUEÑA DE LA RELACIÓN, POR LO QUE AQUÍ SE ESPECIFICA LA LISTA. EN EL OTRO LADO DE LA RELACIÓN IRÁ EL @MappedBy
+	
+	//METODOS:
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -81,6 +89,21 @@ public class Evento implements Serializable{ //NO IMPLEMENTA INTERFACE COMPARABL
 		this.user = user;
 	}
 
+	//MAPEO RELACIÓN Evento - Categoria
+	@ManyToMany
+	@JoinTable( //DEFINE TABLA DE UNION QUE CONECTA Evento CON Categoría, LLAMADA eventos_categorias, ALMACENANDO LAS RELACIONES ENTRE ESTAS. SE REFERENCIAN LAS FK.
+			name = "eventos_categorias",
+			joinColumns = @JoinColumn(name = "fk_evento"),
+			inverseJoinColumns = @JoinColumn(name = "fk_categoria")
+			)
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+	
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+	
 	//METODOS HASHCODE Y EQUALS (por ID): PARA GESTIONAR EL ESTADO DE LAS ENTIDADES 
 		//(por ejemplo, la detección de duplicados, la comparación de entidades en el contexto de persistencia)
 	@Override
@@ -120,12 +143,6 @@ public class Evento implements Serializable{ //NO IMPLEMENTA INTERFACE COMPARABL
 		return Comparator.comparing(Evento::getNombre).thenComparing(Evento::getFechaHora);
 			
 	}
-	
-	
-	
-		
-	
 
 	
-
 }
