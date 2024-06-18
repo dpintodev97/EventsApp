@@ -87,6 +87,7 @@ public class Usuario { //NO NECESITA QUE IMPLEMENTE SERIALIZABLA, YA QUE NO SE E
 		this.password = password;
 	}
 
+	@Column(name = "fecha_registro")
 	public LocalDateTime getFechaRegistro() {
 		return fechaRegistro;
 	}

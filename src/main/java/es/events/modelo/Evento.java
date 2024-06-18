@@ -62,6 +62,7 @@ public class Evento implements Serializable{ //NO IMPLEMENTA INTERFACE COMPARABL
 		this.ubicacion = ubicacion;
 	}
 
+	@Column(name = "fecha_hora")
 	public LocalDateTime getFechaHora() {
 		return fechaHora;
 	}
