@@ -1,8 +1,8 @@
 package es.events.modelo;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,8 +26,10 @@ public class Usuario { //NO NECESITA QUE IMPLEMENTE SERIALIZABLA, YA QUE NO SE E
 	private String password;
 	private LocalDateTime fechaRegistro; //GUARDO EN ESTE TIPO DE DATO, YA QUE ES MODERNO (JAVA8 EN ADELANTE), Y NO NECESITO PRECISIÓN EN NANOSEGUNDOS
 	
-	private List<Evento> eventos; //Usuario DUEÑA DE LA RELACION OneToMany; 
+	private Set<Evento> eventos; //Usuario DUEÑA DE LA RELACION OneToMany; 
+	//NOTA: SET y no List PARA QUE UN USUARIO NO PUEDA AGREGAR DOS VECES MISMO EVENTO (NO DUPLICADOS) Y PARA PODER BUSCAR POR Categorias DE FORMA MÁS RAPIDO Y EFICIENTE.
 	
+	//METODOS:
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
@@ -97,11 +99,11 @@ public class Usuario { //NO NECESITA QUE IMPLEMENTE SERIALIZABLA, YA QUE NO SE E
 	}
 
 	@OneToMany(mappedBy = "user") //MAPEADO POR user, en CLASE EVENTO; QUE ES DONDE SE ESPECIFICA LA fk_usuario QUE APUNTA A id_usuario EN LA BBDD
-	public List<Evento> getEventos() {
+	public Set<Evento> getEventos() {
 		return eventos;
 	}
 
-	public void setEventos(List<Evento> eventos) {
+	public void setEventos(Set<Evento> eventos) {
 		this.eventos = eventos;
 	}
 

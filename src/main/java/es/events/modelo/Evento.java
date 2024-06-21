@@ -3,8 +3,8 @@ package es.events.modelo;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,8 +30,8 @@ public class Evento implements Serializable{ //NO IMPLEMENTA INTERFACE COMPARABL
 	
 	private Usuario user; //LADO DEL N (FK): Evento TIENE ASIGNADO UN Usuario; 1 Usuario TIENE N Eventos (List)
 	
-	private List<Categoria> categorias; //RELACION EVENTO - CATEGORIA, YA QUE 1 EVENTO TIENE 1 LISTA DE CATEGORIAS A LAS CUALES PUEDE PERTENECER; @ManyToMany
-										//CLASE EVENTO ES DUEÑA DE LA RELACIÓN, POR LO QUE AQUÍ SE ESPECIFICA LA LISTA. EN EL OTRO LADO DE LA RELACIÓN IRÁ EL @MappedBy
+	private Set<Categoria> categorias; //RELACION EVENTO - CATEGORIA, YA QUE 1 EVENTO TIENE 1 SET DE CATEGORIAS A LAS CUALES PUEDE PERTENECER; @ManyToMany
+										//CLASE EVENTO ES DUEÑA DE LA RELACIÓN, POR LO QUE AQUÍ SE ESPECIFICA LA SET. EN EL OTRO LADO DE LA RELACIÓN IRÁ EL @MappedBy
 	
 	//METODOS:
 	
@@ -96,11 +96,11 @@ public class Evento implements Serializable{ //NO IMPLEMENTA INTERFACE COMPARABL
 			joinColumns = @JoinColumn(name = "fk_evento"),
 			inverseJoinColumns = @JoinColumn(name = "fk_categoria")
 			)
-	public List<Categoria> getCategorias() {
+	public Set<Categoria> getCategorias() {
 		return categorias;
 	}
 	
-	public void setCategorias(List<Categoria> categorias) {
+	public void setCategorias(Set<Categoria> categorias) {
 		this.categorias = categorias;
 	}
 	

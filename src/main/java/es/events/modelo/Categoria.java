@@ -1,7 +1,7 @@
 package es.events.modelo;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +20,7 @@ public class Categoria {
 	
 	//NO SE DEFINE UNA LISTA EXPLÍCITA COMO TAL DE EVENTOS EN ESTA CLASE; LA LISTA DE CATEGORIAS SE GESTIONA EN LA DUEÑA DE LA RELACION, Evento
 	@ManyToMany(mappedBy = "categorias")
-	private List<Evento> eventos;
+	private Set<Evento> eventos;
 	
 	//METODOS:
 	
