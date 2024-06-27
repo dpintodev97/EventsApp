@@ -68,6 +68,12 @@ public class Categoria {
 		Categoria other = (Categoria) obj;
 		return idCategoria == other.idCategoria;
 	}
+
+	@Override
+	public String toString() {
+		return "Categoria [idCategoria=" + idCategoria + ", nombre=" + nombre + ", descripcion=" + descripcion
+				+ ", eventos=" + eventos + "]";
+	}
 	
 	
 }
