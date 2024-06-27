@@ -125,6 +125,14 @@ public class Usuario { //NO NECESITA QUE IMPLEMENTE SERIALIZABLA, YA QUE NO SE E
 	}
 	//**** NOTA: METODOS HASHCODE Y EQUALS: NO SON NECESARIOS AHORA MISMO, NO ES NECESARIO ORDENAR USUARIOS... 
 	//(SI A FUTURO CRECE LA APP Y NECESITO ORDENAR EN COLECCIONES LOS USUARIOS, SEGUN ROLES EN LA APP, ES INTERESANTE)
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", ape1=" + ape1 + ", ape2=" + ape2
+				+ ", nickname=" + nickname + ", correo=" + correo + ", password=" + password + ", fechaRegistro="
+				+ fechaRegistro + ", eventos=" + eventos + "]";
+	}
+	
 	
 
 	
