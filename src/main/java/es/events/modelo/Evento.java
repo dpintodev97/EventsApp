@@ -144,5 +144,12 @@ public class Evento implements Serializable{ //NO IMPLEMENTA INTERFACE COMPARABL
 			
 	}
 
+	@Override
+	public String toString() {
+		return "Evento [idEvento=" + idEvento + ", nombre=" + nombre + ", descripcion=" + descripcion + ", ubicacion="
+				+ ubicacion + ", fechaHora=" + fechaHora + ", user=" + user + ", categorias=" + categorias + "]";
+	}
+	
+
 	
 }
